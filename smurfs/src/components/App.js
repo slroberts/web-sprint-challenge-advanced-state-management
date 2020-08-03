@@ -1,4 +1,8 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
+import {connect} from "react-redux";
+
+import {fetchData} from "../actions";
+
 import "./App.css";
 class App extends Component {
   render() {
@@ -13,4 +17,11 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    isFetching: state.isFetching,
+    smurfs: state.smurfs,
+  };
+};
+
+export default connect(mapStateToProps, {fetchData})(App);
